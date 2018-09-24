@@ -1,0 +1,82 @@
+﻿@model Firma.PortalWWW.Models.Sklep.Zamowienie
+@{
+    ViewBag.Title = "Dane";
+    Layout = "~/Views/Shared/_SklepLayout.cshtml";
+}
+
+<div class="myData">
+    <h5>Shopping without registration</h5>
+    <div class="informations">
+        Supported credit cards: ING, Inteligo, iPKO, mBank, Bank Pekao S. A., MultiBank, BZ WBK, Nordea, Alior Bank, Credit Agricole, Bank Millennium.
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+    <fieldset>
+        <legend class="legend">My Data</legend>
+        <div style="width: 30vw; margin-left:auto; margin-right: auto;">
+            <div class="input-field">
+                <label for="first_name">Name</label>
+                @Html.EditorFor(model=> model.Imie, new { htmlAttributes = new { @id = "first_name" } })
+                @Html.ValidationMessageFor(model => model.Imie)
+            </div>
+            <div class="input-field">
+                <label for="last_name">Surname</label>
+                @Html.EditorFor(model => model.Nazwisko, new { htmlAttributes = new { @id = "last_name" } })
+                @Html.ValidationMessageFor(model => model.Nazwisko)
+            </div>
+            <div class="input-field">
+                <label for="street">Street</label>
+                @Html.EditorFor(model => model.Ulica, new { htmlAttributes = new { @id = "street" } })
+                @Html.ValidationMessageFor(model => model.Ulica)
+            </div>
+            <div class="input-field">
+                <label for="city">City</label>
+                @Html.EditorFor(model => model.Miasto, new { htmlAttributes = new { @id = "city" } })
+                @Html.ValidationMessageFor(model => model.Miasto)
+            </div>
+            <div class="input-field">
+                <label for="province">Province</label>
+                @Html.EditorFor(model => model.Wojewodztwo, new { htmlAttributes = new { @id = "province" } })
+                @Html.ValidationMessageFor(model => model.Wojewodztwo)
+            </div>
+            <div class="input-field">
+                <label for="addressCode">Address Code</label>
+                @Html.EditorFor(model => model.KodPocztowy, new { htmlAttributes = new { @id = "addressCode" } })
+                @Html.ValidationMessageFor(model => model.KodPocztowy)
+            </div>
+            <div class="input-field">
+                <label for="country">Country</label>
+                @Html.EditorFor(model => model.Panstwo, new { htmlAttributes = new { @id = "country" } })
+                @Html.ValidationMessageFor(model => model.Panstwo)
+            </div>
+            <div class="input-field">
+                <label for="phoneNr">Phone Number</label>
+                @Html.EditorFor(model => model.NumerTelefonu, new { htmlAttributes = new { @id = "phoneNr" } })
+                @Html.ValidationMessageFor(model => model.NumerTelefonu)
+            </div>
+            <div class="input-field">
+                <label for="email">E-mail</label>
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @id = "email" } })
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+        </div>
+        <br>
+        <br>
+
+        <div class="myData-result">
+            <!--<h4>Cart summary</h4>
+            Items count: @String.Format("{0:F}", ViewData["ilosc"]) <br />
+            Value: @String.Format("{0:F} zł", ViewData["wartosc"])<br />-->
+
+
+            <p style="margin-top: 20px; margin-bottom: 20px; margin-left: 25vw;">
+                <input class="waves-effect waves-light btn cyan accent-4" type="submit" value="Continue" />
+            </p>
+
+        </div>
+    </fieldset>
+    }
+</div>
+

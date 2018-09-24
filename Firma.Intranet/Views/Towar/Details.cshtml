@@ -1,0 +1,86 @@
+﻿@model Firma.Intranet.Models.CMS.Towar
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Towar</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Rodzaj.Nazwa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rodzaj.Nazwa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nazwa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nazwa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kod)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cena)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cena)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FotoUrl)
+        </dt>
+
+        <dd>
+            <div class="display-label">Foto</div>
+            <div class="display-field">
+                 <img alt="@Model.Nazwa" src="@Model.FotoUrl" height="200"  width="200"/>
+            </div>
+
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KrotkiOpis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KrotkiOpis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Opis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OfertaSpecjalna)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OfertaSpecjalna)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdTowaru }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

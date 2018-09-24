@@ -1,0 +1,64 @@
+﻿@model Firma.PortalWWW.Models.Sklep.Zamowienie
+
+@{
+    ViewBag.Title = "Podsumowanie";
+    Layout = "~/Views/Shared/_SklepLayout.cshtml";
+}
+
+<div class="summaryOrder">
+    <h5>Thanks for your order.</h5>
+
+    <br />
+
+    <div class="softBorder"></div>
+    <br>
+    <b>Date and time:</b><br />
+    &emsp;@Model.DataZamowienia<br />
+    <b>Name and surname:</b><br />
+    &emsp;@Model.Imie
+    &emsp;@Model.Nazwisko <br />
+    <b>Address:</b><br />
+    &emsp;@Model.Ulica <br />
+    &emsp;@Model.Miasto <br />
+    <b>Contact</b><br />
+    &emsp;@Model.NumerTelefonu <br />
+    &emsp;@Model.Email <br />
+    <br>
+    <div class="softBorder"></div>
+    <br />
+    <br />
+    <h5>Value of the order: @Model.Total </h5>
+    <br />
+    <table class="highlight responsive-table">
+        <thead>
+            <tr>
+                <th>Nazwa towaru</th>
+                <th>Cena</th>
+                <th>Ilość</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.PozycjaZamowienia) {
+                <tr>
+                    <td>
+                        @Html.ActionLink(item.Towar.Nazwa, "Szczegoly", "Sklep", new { id = item.IdTowaru }, new { @class = "towarLink" })
+                    </td>
+                    <td>
+                        @String.Format("{0:F}", item.Towar.Cena)
+                    </td>
+                    <td>
+                        @String.Format("{0:F}", item.Ilosc)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <br>
+    <div class="softBorder"></div>
+    <br />
+
+    <h5>Thank you for shopping!</h5>
+
+    <div style="width: 100%; height: 200px;"></div>
+</div>

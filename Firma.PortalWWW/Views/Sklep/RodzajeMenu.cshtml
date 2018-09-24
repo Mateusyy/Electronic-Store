@@ -1,0 +1,9 @@
+﻿@model IEnumerable<Firma.PortalWWW.Models.Sklep.Rodzaj>
+<div>
+    @foreach (var item in Model)
+    {
+        @Html.ActionLink(item.Nazwa, "Index", "Sklep", new { id = item.IdRodzaju }, new { @class = "submenu" })
+    }
+    <br>
+    @Html.ActionLink("* Special offer *", "OfertySpecjalne", "Sklep", "", new { @class = "submenu_link" })
+</div>

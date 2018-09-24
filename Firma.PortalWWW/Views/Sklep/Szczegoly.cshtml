@@ -1,0 +1,21 @@
+﻿@model Firma.PortalWWW.Models.Sklep.Towar
+@{
+    ViewBag.Title = "Szczegoly";
+    Layout = "~/Views/Shared/_SklepLayout.cshtml";
+}
+<p class="featuredpara"><b>DESCRIPTION</b></p>
+
+<div class="details">
+    <div class="details_photo"><img alt="@Model.Nazwa" src="@Model.FotoUrl"  height="200" width="240" /> </div>
+    
+    <h3 style="padding-left:2vw; padding-top:2vh; font-size: 22px;">@Model.Nazwa</h3>
+    <br/>
+    <div style="padding-left:2vw; "><b>Descript:</b></div>
+    <div style="padding-left:5vw;">@Model.Opis</div>
+    <br/>
+    <div class="prize" style="padding-left:2vw;"><h3>@String.Format("{0:F} zł", Model.Cena)</h3></div>
+    <br/>
+    <div>
+        @Html.ActionLink("Shop Now!", "DodajDoKoszyka", "Koszyk", new { id = Model.IdTowaru }, new { @class = "btnshopnow" })
+    </div>
+</div>

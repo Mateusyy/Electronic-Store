@@ -1,0 +1,55 @@
+﻿@model Firma.PortalWWW.Models.Sklep.DaneDoKoszyka
+
+@{
+    ViewBag.Title = "Koszyk";
+    Layout = "~/Views/Shared/_SklepLayout.cshtml";
+}
+
+
+<div class="shoppingCart">
+
+    <h4 style="font-size: 24px;">My shopping cart</h4>
+    <br>
+    <table class="highlight responsive-table">
+        <thead>
+            <tr>
+                <th>Name:</th>
+                <th>Prize:</th>
+                <th>Count:</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ElementyKoszyka) {
+                <tr>
+                    <td>
+                        @Html.ActionLink(item.Towar.Nazwa, "Szczegoly", "Sklep", new { id = item.IdTowaru }, new { @class = "towarLink" })
+                    </td>
+                    <td>
+                        @String.Format("{0:F} zł", item.Towar.Cena)
+                    </td>
+                    <td>
+                        @String.Format("{0:F}", item.Ilosc)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Delete", "UsunZKoszyka", "Koszyk", new { id = item.IdTowaru }, new { @class = "waves-effect waves-light btn cyan accent-4" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="shoppingCart-result">
+    <h4 style="font-size: 22px;">Cart summary</h4>
+    <div>
+        <h4>Result: @String.Format("{0:F} zł", Model.Razem) </h4>
+    </div>
+    <br/>
+    <div class="links">
+        @Html.ActionLink("Buy Now!", "Dane", "Zakup","", new { @class = "waves-effect waves-light btn cyan accent-4" })
+        @Html.ActionLink("Clear shopping cart", "UsunWszystkieZKoszyka", "Koszyk","", new { @class = "waves-effect waves-light btn cyan accent-4" })
+    </div>
+</div>
+
+
+

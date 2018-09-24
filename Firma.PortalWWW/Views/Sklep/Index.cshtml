@@ -1,0 +1,104 @@
+﻿@model Firma.PortalWWW.Models.Sklep.Rodzaj
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_SklepLayout.cshtml";
+}
+
+<!--FILTRY-->
+<script type="text/javascript" src="js/materialize.min.js"></script>
+
+<div class="filters">
+    <legend class="legend">Filters</legend>
+    <div class="input-field" style="width: 90%; margin-left:auto; margin-right:auto;">
+
+        @using (Html.BeginForm("Search", "Sklep", FormMethod.Get)) {
+            //wyszukiwanie
+            <p>@Html.TextBox("search", null, new { @class = "textfield" })</p>
+            <p>Prize:</p>
+            <p>
+                <input type="number" placeholder="f" name="_prize" class="textfieldPrize" style="float: left;" />
+                <input type="number" placeholder="t" name="prize_" class="textfieldPrize" style="float: left;" />
+            </p>
+
+            <p>
+                <label>
+                    <input name="sort" type="radio" value="asc" checked />
+                    <span>Ascending</span>
+                </label>
+                <label>
+                    <input name="sort" type="radio" value="desc" />
+                    <span>Descending</span>
+                </label>
+            </p>
+            <p style="clear: both;"><input type="submit" value="search" class="waves-effect waves-light btn cyan accent-4" style="font-weight: 500; color: white;" /></p>
+        }
+
+    </div>
+</div>
+
+
+<div class="slider grey lighten-3">
+    <div class="slides grey lighten-3">
+        <div class="slide1">
+            <img src="~/Content/Images/slide3.png" class="img1">
+        </div>
+        <div class="slide1">
+            <img src="~/Content/Images/slide2.png" class="img2">
+        </div>
+        <div class="slide1">
+            <img src="~/Content/Images/slide1.png" class="img3">
+        </div>
+    </div>
+    <div class="constant">
+        <h1>iPhone 8</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fringilla felis at fringilla mattis.</p>
+        <a class="btnshopnow">Shop Now!</a>
+    </div>
+</div>
+
+
+
+<div class="content1">
+    <div class="innertitle1">
+        <h5>Home Theater</h5>
+        <p class="para1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fringilla felis at fringilla mattis</p>
+        <br />
+        <p class="para1">Shop Now!</p>
+    </div>
+    <div class="innertitle2">
+        <h5>Home Appliances</h5>
+        <p class="para1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fringilla felis at fringilla mattis</p>
+        <br />
+        <p class="para1">Shop Now!</p>
+    </div>
+
+    <div class="inner1">
+        <img src="~/Content/Images/speakers.png" class="img1">
+    </div>
+    <div class="inner2">
+        <img src="~/Content/Images/vacuumCleaner.png" class="img2">
+    </div>
+</div>
+
+<p class="featuredpara">Latest</p>
+<div class="productsContainer">
+    @foreach (var item in Model.Towar) {
+        <div class="products">
+            <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="@item.FotoUrl">
+                </div>
+                <div class="card-content">
+                    <h3>@String.Format("{0:F} zł", item.Cena)</h3>
+                    <span class="card-title activator grey-text text-darken-4" style="font-size:18px;">@item.Nazwa<i class="material-icons right">more_vert</i></span>
+                    @Html.ActionLink("Shop Now!", "Szczegoly", "Sklep", new { id = item.IdTowaru }, "")
+
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">@item.Nazwa<i class="material-icons right">close</i></span>
+                    <p>@item.KrotkiOpis</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>

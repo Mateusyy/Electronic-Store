@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Firma.Intranet.Models.CMS.Towar>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Rodzaj.Nazwa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nazwa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kod)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cena)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FotoUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KrotkiOpis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Opis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OfertaSpecjalna)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rodzaj.Nazwa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nazwa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kod)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cena)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FotoUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KrotkiOpis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Opis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OfertaSpecjalna)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdTowaru }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdTowaru }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdTowaru })
+        </td>
+    </tr>
+}
+
+</table>

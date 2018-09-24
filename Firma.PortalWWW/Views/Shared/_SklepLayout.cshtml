@@ -1,0 +1,124 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="~/Content/Site.css" rel="stylesheet">
+
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</head>
+  
+<body>
+    <!-- This is header -->
+    <div class="header">
+        <a href="/Sklep/Index"><img src="~/Content/Images/logo.jpg.png" class="logo"></a>
+        <br>
+        <nav class="nav">
+            <a class="waves-effect waves-light btn-large black menuitem">Button</a>
+            <a class="waves-effect waves-light btn-large black menuitem">Button</a>
+            <a class="waves-effect waves-light btn-large black menuitem">Button</a>
+            <a class="waves-effect waves-light btn-large black menuitem">Button</a>
+            <a class="waves-effect waves-light btn-large black menuitem">Button</a>
+            @Html.ActionLink("Shopping Cart", "Index", "Koszyk", "", new { @class = "waves-effect waves-light btn-large black" })
+        </nav>
+
+
+
+        <div class="responsiveMenuDropDown right">
+            <ul id="dropdown2" class="dropdown-content" style="width: 300px !important">
+                <li>@Html.ActionLink("Shopping Cart", "Index", "Koszyk", "", new { @class = "" })</li>
+                <li><a href="#!">Button</a></li>
+                <li><a href="#!">Button</a></li>
+                <li><a href="#!">Button</a></li>
+                <li><a href="#!">Button</a></li>
+                <li><a href="#!">Button</a></li>
+            </ul>
+            <a class="dropdown-button btn black" href="#!" data-constrainwidth="false" data-target="dropdown2" style="width: 35vw !important">Menu<i class="material-icons large right">menu</i></a>
+        </div>
+
+    </div>
+
+    <section class="section">
+        <!-- This is section 1 of the page -->
+        <div class="section1">
+            <div class="navigation">
+                <img src="~/Content/Images/toggle.png" class="toggle">
+                <p class="cgr">Categories</p>
+            </div>
+            <span style="font-size:30px;cursor:pointer" onclick="openNav()" class="responsiveToogle">&#9776;</span>
+            <div>
+                @{Html.RenderAction("RodzajeMenu", "Sklep");}
+            </div>
+
+
+        </div>
+
+
+        <!-- This is section 2 of the page -->
+        <div class="section2">
+            @RenderBody()
+        </div>
+    </section>
+
+
+
+
+
+    <script>
+
+        $(document).ready(function () {
+            $('select').material_select();
+        });
+
+        var $slides = $('.slides');
+        var $slide = $('.slide1');
+        var count = 1;
+
+        $(document).ready(function () {
+
+            setInterval(function () {
+
+                $slides.animate({ 'margin-left': '-=68vw' }, 1200, function () {
+                    count++;
+                    if (count === 4) {
+                        $slides.css("margin-left", 0);
+                        count = 1;
+                    }
+                });
+            }, 4000);
+        });
+
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "75vw";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+
+        $('.dropdown-button').dropdown({
+            inDuration: 300,
+            outDuration: 225,
+            constrain_width: false, // Does not change width of dropdown to that of the activator
+            hover: false, // Activate on hover
+            gutter: 0, // Spacing from edge
+            belowOrigin: true, // Displays dropdown below the button
+            alignment: 'left' // Displays dropdown with edge aligned to the left of button
+        }
+        );
+
+    </script>
+</body>
+</html>

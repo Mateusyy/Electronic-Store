@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Firma.PortalWWW.Models.Sklep.Towar>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_SklepLayout.cshtml";
+}
+
+<p class="featuredpara">Latest</p>
+<div class="productsContainer">
+    @foreach (var item in Model) {
+        <div class="products">
+            <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="@item.FotoUrl">
+                </div>
+                <div class="card-content">
+                    <h3>@String.Format("{0:F} zł", item.Cena)</h3>
+                    <span class="card-title activator grey-text text-darken-4" style="font-size:18px;">@item.Nazwa<i class="material-icons right">more_vert</i></span>
+                    @Html.ActionLink("Shop Now!", "Szczegoly", "Sklep", new { id = item.IdTowaru }, "")
+
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">@item.Nazwa<i class="material-icons right">close</i></span>
+                    <p>@item.KrotkiOpis</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
